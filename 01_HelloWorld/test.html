@@ -21,14 +21,19 @@
   <p>hellow :{{msg}}</p>
 </div>
 
-<p id="test1" v-model='msg'>hellow</p>
+<p id="test1">hellow {{msg}}</p>
 
 <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
 <script type="text/javascript">
   new Vue({
     el:'#test',
-    data:{
-      msg:'atguigu'
+    // data:{
+    //   msg:'atguigu'
+    // }
+    data(){
+      return{
+        msg:'atguigu'
+      }
     }
   })
   let vm = new Vue({

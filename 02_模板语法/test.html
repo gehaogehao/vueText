@@ -31,12 +31,26 @@
 
 <div id="app">
   <h2>1. 双大括号表达式</h2>
-
+  <p>{{msg}}</p>
+  <p>{{msg.toUpperCase()}}</p>
   <h2>2. 指令一: 强制数据绑定</h2>
 
   <h2>3. 指令二: 绑定事件监听</h2>
 
 </div>
-
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el:'#app',
+    // data:{
+    //   msg:'I Love Atguigu'
+    // }
+    data(){
+      return{
+        msg:'I Love Atguigu'
+      }
+    }
+  })
+</script>
 </body>
 </html>
