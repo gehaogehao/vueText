@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="请在此输入!" v-model='val'>
+        <button @click='add'>add</button>
+        <ul>
+            <li v-for='item in list'>{{item}}</li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el:'#app',
+            data() {
+                return {
+                    list:['吃饭','睡觉','打豆豆'],
+                    val:''
+                }
+            },
+            methods: {
+                add(){
+                    this.list.push(this.val)
+                    this.val = ''
+                }
+            },
+        })
+    </script>
+</body>
+</html>

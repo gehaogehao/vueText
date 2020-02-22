@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak]{display: none;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <span v-pre>这是个神奇的事情!!!{{msg}}</span>
+        <div v-cloak>
+            <span>{{msg}}</span>
+            <span>{{msg}}</span>
+            <span>{{msg}}</span>
+        </div>
+        <span v-once>{{msg}}</span>
+    </div>
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'老神奇了'
+        },
+        mounted() {
+            setTimeout(()=>{
+                this.msg = '钢铁侠'
+            },4000)
+        },
+    })
+    </script>
+</body>
+</html>

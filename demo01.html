@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 300px;
+            height: 300px;
+            background-color: deeppink;
+        }
+        .inner{
+            width: 150px;
+            height: 150px;
+            background-color: hotpink;
+        }
+        .item{
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <span>{{num+5}}</span>
+        <span>{{ok ? '真':'假'}}</span>
+        <span v-text="msg1"></span>
+        <span v-html="msg2"></span>
+        <div class="wrap" @click='wrap'>
+            <div class="inner" @click.self='inner'>
+                <div class="item" @click='item'>
+
+                </div>
+            </div>
+        </div>
+        <a href="http://www.baidu.com" @click.prevent>gogogo</a>
+        <input type="text" @keydown.once='demo'>
+        <div @click='demo01' class="item"></div>
+    </div>
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'你有酒吗?我没有故事!',
+            num:5,
+            ok:false,
+            msg1:'快走!弟弟',
+            msg2:'<h1>弟弟!就我!!</h1>'
+        },
+        methods: {
+            item(){
+                console.log('item')
+            },
+            inner(){
+                console.log('inner')
+            },
+            wrap(){
+                console.log('wrap')
+            },
+            demo(){
+                console.log('demo')
+            },
+            demo01(){
+                console.log('demo01')
+            }
+        },
+    })
+    </script>
+</body>
+</html>
