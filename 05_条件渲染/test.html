@@ -15,11 +15,8 @@
 -->
 
 <div id="demo">
-  <p v-if='ok'>表白成功</p>
-  <p v-else>表白失败</p>
-
-  <p v-show='ok'>求婚成功</p>
-  <p v-show=!ok>求婚失败</p>
+  <p v-if='ok'>高薪就业</p>
+  <p v-else>解甲归田</p>
   <button @click='change'>点击切换</button>
 </div>
 
@@ -27,14 +24,11 @@
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
   new Vue({
-    el:"#demo",
-    // data(){
-    //   return{
-    //     ok:true
-    //   }
-    // },
-    data:{
-      ok:true
+    el:'#demo',
+    data(){
+      return{
+        ok:true
+      }
     },
     methods: {
       change(){

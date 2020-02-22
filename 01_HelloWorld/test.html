@@ -18,10 +18,21 @@
 
 <div id="test">
   <input type="text" v-model='msg'>
-  <p>hellow :{{msg}}</p>
+  <p>hello :{{msg}}</p>
 </div>
 
 <p id="test1">hellow {{msg}}</p>
+
+
+<div id="box">
+  <input type="text" v-model='msg'>
+  <p>hello:{{msg}}</p>
+</div>
+
+<p id="content">{{msg}}</p>
+
+<p class="class">你好! {{msg}}</p>
+
 
 <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
 <script type="text/javascript">
@@ -47,6 +58,38 @@
   setTimeout(()=>{
     vm.msg = 'gehao555' 
   },2000)
+
+
+  new Vue({
+    el:'#box',
+    data:{
+      msg:'gehao'
+    }
+  })
+
+  const vm1 = new Vue({
+    el:"#content",
+    data(){
+      return{
+        msg:'这是一个故事'
+      }
+    }
+  })
+  setTimeout(()=>{
+    vm1.msg = "鬼故事"
+  },4000)
+
+const vm2 = new Vue({
+  el:".class",
+  data(){
+    return{
+      msg:"哈哈哈"
+    }
+  }
+})
+setTimeout(()=>{
+  vm2.msg = '呵呵呵'
+},2000)
 </script>
 </body>
 </html>
