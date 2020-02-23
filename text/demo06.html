@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 200px;
+            height: 200px;
+            background-color: deeppink;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-cloak>
+            <span>{{msg}}</span>
+            <span>{{msg + 38 + 2}}</span>
+        </div>
+        <div>
+            <span v-text="msg1" v-pre></span>
+            <span v-html="msg2"></span>
+            <input type="text" @keydown='down'>
+        </div>
+        <div :class="className01" @click.once='wrap'>
+            <div :class="className02" @click.stop='inner' v-once></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            msg:520,
+            msg1:'弟弟',
+            msg2:'<i>救我</i>',
+            className01:[{wrap:true}],
+            className02:'inner'
+        },
+        methods: {
+            wrap(){
+                console.log('wrap')
+            },
+            inner(){
+                console.log('inner')
+            },
+            down(){
+                console.log('down')
+            }
+        },
+    })
+    </script>
+</body>
+</html>

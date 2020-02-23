@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in list">
+                <span>{{item.name}}</span>
+                <span>{{item.age}}</span>
+                <span>{{item.car}}</span>
+                <button @click='del(index)'>del</button>
+                <button @click='update(index)'>update</button>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            list:[
+                {name:'大头儿子',age:6,car:'玩具车'},
+                {name:'云朵妹妹',age:4,car:'公交车'},
+                {name:'大耳朵图图',age:6,car:'钩机'},
+            ]
+        },
+        methods: {
+            del(index){
+                this.list.splice(index,1)
+            },
+            update(index){
+                this.list.splice(index,1,{name:'汤姆',age:18,car:'保时捷'})
+            }
+        },
+    })
+    </script>
+</body>
+</html>
