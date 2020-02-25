@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <v-span></v-span>
+        <v-span></v-span>
+        <v-span></v-span>
+    </div>
+    <div id="app2">
+        {{msg}}
+        <v-span></v-span>
+    </div>
+    
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    
+
+     Vue.component('v-span',{
+        template:`<span>这是一个神话{{msg}}</span>`,
+        data() {
+            return {
+                msg:'小哪吒'
+            }
+        },
+    })
+    
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'吃葡萄不吐葡萄皮'
+        }
+    })
+
+    new Vue({
+        el:'#app2',
+        data:{
+            msg:'吃葡萄不吐葡萄皮'
+        }
+    })
+    
+    </script>
+</body>
+</html>

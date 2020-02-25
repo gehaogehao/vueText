@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(val,key, index) in obj">
+                <!-- <span>{{key}}</span> -->
+                <span>{{val}}</span>
+                <button @click='update(index)'>update</button>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            obj:{
+                name:'dashazi',
+                age:666,
+            }
+        },
+        methods: {
+            update(index){
+                //if(index === 0) this.obj.name = '啦啦'
+                //if(index === 1) this.obj.age = 8
+                //this.obj.wife = '老婆'
+                this.$set(this.obj,'wife','laoshazi')
+            }
+        },
+    })
+    </script>
+</body>
+</html>

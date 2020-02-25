@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span>{{msg}}</span>
+        <v-btn @click='handleC'></v-btn>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'大傻子'
+        },
+        methods: {
+            handleC(){
+                console.log('app---handleC');
+            }
+        },
+        components:{
+            'v-btn':{
+                template:`<button @click='handleC'>click</button>`,
+                methods:{
+                    handleC(){
+                        this.$emit('click')
+                    }
+                }
+            }
+        }
+    })
+    </script>
+</body>
+</html>

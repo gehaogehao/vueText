@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span>firstname:</span><input type="text" v-model='firstname'>
+        <span>lastname:</span><input type="text" v-model='lastname'>
+        <span>fullname:</span><input type="text" v-model='fullname'>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            firstname : 'T',
+            lastname : 'MAC',
+            fullname : 'T-MAC'
+        },
+        watch: {
+            firstname(val){
+                this.fullname = `${val}-${this.lastname}`
+            },
+            lastname(val){
+                this.fullname = `${this.firstname}-${val}`
+            },
+            fullname(val){
+                let arr = val.split('-')
+                this.firstname = arr[0]
+                this.lastname = arr[1]
+            }
+        },
+    })
+    </script>
+</body>
+</html>

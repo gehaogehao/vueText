@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <v-a></v-a>
+        <v-b></v-b>
+        <v-c></v-c>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    Vue.prototype.buse = new Vue()
+    const a = {
+        template:`<span @click='change'>{{msg}}</span>`,
+        data() {
+            return {
+                msg:'damu'
+            }
+        },
+        methods: {
+            change(){
+                this.buse.$emit('changeTexy',this.msg)
+            }
+        },
+    }
+    const b = {
+        template:`<span>{{msg}}</span>`,
+        data() {
+            return {
+                msg:'xiaofei'
+            }
+        },
+        mounted() {
+            this.buse.$on("changeTexy",(msg)=>{
+                this.msg = msg
+            })
+        },
+    }
+    const c = {
+        template:`<span>{{msg}}</span>`,
+        data() {
+            return {
+                msg:'laoliu'
+            }
+        },
+        mounted() {
+            this.buse.$on("changeTexy",(msg)=>{
+                this.msg = msg
+            })
+        },
+    }
+    new Vue({
+        el:'#app',
+        components:{
+            'v-a':a,
+            'v-b':b,
+            'v-c':c,
+        }
+    })
+    </script>
+</body>
+</html>

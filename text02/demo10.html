@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model='val'>
+        <button @click='add'>add</button>
+        <v-list :newlist='list'></v-list>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            val:'',
+            list:['吃饭','睡觉','打豆豆']
+        },
+        methods: {
+            add(){
+                this.list.push(this.val)
+                this.val = ''
+            }
+        },
+        components:{
+            'v-list':{
+                template:`<ul><li v-for="(item, index) in newlist" :key="index">{{item}}</li></ul>`,
+                props:['newlist']
+            }
+        }
+    })
+    </script>
+</body>
+</html>

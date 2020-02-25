@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model='searchVal'>
+        <ul>
+            <li v-for="(item, index) in searchArr" :key="index">
+                <span>{{item.name}}</span>
+                <span>{{item.age}}</span>
+                <span>{{item.assess}}</span>
+            </li>
+        </ul>
+        <button @click='up'>按年纪升序</button>
+        <button @click='down'>按年级降序</button>
+        <button @click='old'>按年级不变排序</button>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            searchVal:'',
+            sortType:0,
+            list:[
+                {name:"老刘啊",age:58,assess:"稳的一比"},
+                {name:"海峰",age:39,assess:"200斤的小可爱"},
+                {name:"阿强",age:42,assess:"可爱的不要不要的"},
+                {name:"天禹",age:43,assess:"帅的不要不要的"},
+                {name:"晓飞啊",age:38,assess:"老男人"},
+                {name:"达姆",age:40,assess:"有趣的灵魂 帅气的外表 不要脸的达姆"},
+                {name:"程程",age:41,assess:"200斤的大可爱"}
+            ]
+        },
+        computed: {
+            searchArr(){
+                let filterArr = this.list.filter((item)=>{
+                    return item.name.includes(this.searchVal)
+                })
+                switch (this.sortType) {
+                    case 0:
+                        break;
+                    case 1:
+                        filterArr.sort((a,b)=>{
+                            return a.age - b.age
+                        })
+                        break;
+                    case -1:
+                        filterArr.sort((a,b)=>{
+                            return b.age - a.age
+                        })
+                        break;
+                }
+                return filterArr
+            }
+        },
+        methods: {
+            up(){this.sortType = 1},
+            down(){this.sortType = -1},
+            old(){this.sortType = 0}
+        },
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model='searchVal'>
+        <ul>
+            <li v-for="item in searchList">
+                <span>{{item.name}}</span>
+                <span>{{item.age}}</span>
+                <span>{{item.assess}}</span>
+            </li>
+        </ul>
+        <button @click='up'>升序</button>
+        <button @click='down'>降序</button>
+        <button @click='old'>原本不动</button>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            searchVal:'',
+            searchType:0,
+            list:[
+                {name:"老刘啊",age:58,assess:"稳的一比"},
+                {name:"海峰",age:39,assess:"200斤的小可爱"},
+                {name:"阿强",age:42,assess:"可爱的不要不要的"},
+                {name:"天禹",age:43,assess:"帅的不要不要的"},
+                {name:"晓飞啊",age:38,assess:"老男人"},
+                {name:"达姆",age:40,assess:"有趣的灵魂 帅气的外表 不要脸的达姆"},
+                {name:"程程",age:41,assess:"200斤的大可爱"}
+            ],
+        },
+        computed: {
+            searchList(){
+                var newArr = this.list.filter((item)=>{
+                    return item.name.includes(this.searchVal)
+                })
+
+                switch (this.searchType){
+                    case 0:
+                        break;
+                    case 1:
+                        newArr.sort((a,b)=>{
+                            return a.age - b.age
+                        })
+                        break;
+                    case -1:
+                        newArr.sort((a,b)=>{
+                            return b.age - a.age
+                        })
+                        break;
+                }
+                return newArr
+            }
+        },
+        methods: {
+            up(){
+                this.searchType = 1
+            },
+            down(){
+                this.searchType = -1
+            },
+            old(){
+                this.searchType = 0
+            }
+        },
+    })
+    </script>
+</body>
+</html>

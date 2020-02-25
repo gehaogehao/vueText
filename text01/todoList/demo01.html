@@ -9,27 +9,34 @@
     <div id="app">
         <input type="text" placeholder="请输入爱好!" v-model='val'>
         <button @click='add'>add</button>
-        <ul>
-            <li v-for="(item, index) in list">
-                {{item}}
-            </li>
-        </ul>
+        <v-list :list='list'></v-list>
     </div>
-    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript" src="../../js/vue.js"></script>
     <script type="text/javascript">
-    new Vue({
-        el:'#app',
-        data:{
-            list:['吃饭','睡觉','打呼噜'],
-            val:''
-        },
-        methods: {
-            add(){
-                this.list.push(this.val)
-                this.val = ''
+        new Vue({
+            el:'#app',
+            data:{
+                list:['吃饭','睡觉','打呼噜'],
+                val:''
+            },
+            methods: {
+                add(){
+                    this.list.push(this.val)
+                    this.val = ''
+                }
+            },
+            components:{
+                'v-list':{
+                    template:  `<ul>
+                                    <li v-for="item in list">
+                                        {{item}}
+                                    </li>
+                                </ul>`,
+                   props:['list']              
+                }
+
             }
-        },
-    })
+        })
     </script>
 </body>
 </html>

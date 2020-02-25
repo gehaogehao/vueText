@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    var vm = new Vue({
+        name:'根组件',
+        // el:'#app',
+        template:'<span>{{msg}}</span>',
+        data:{
+            msg:'这是啥玩应!!!'
+        }
+    })
+    console.log(vm.$root === vm);
+    //console.log(vm.$el);
+    console.log(vm.$options.name);
+    console.log(vm.$data.msg);
+    vm.$mount('#app')
+    </script>
+</body>
+</html>

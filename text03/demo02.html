@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <v-a name='damu'></v-a>
+        <v-a name='cc'></v-a>
+        <v-a name='xfz'></v-a>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    Vue.prototype.buse = new Vue()
+    const a = {
+        props:['name'],
+        template:'<span @click="change">{{newName}}</span>',
+        data() {
+            return {
+                newName : this.name
+            }
+        },
+        mounted() {
+            this.buse.$on('changeText',(name)=>{
+                this.newName = name
+            })
+        },
+        methods: {
+            change(){
+                this.buse.$emit('changeText',this.newName)
+            }
+        },
+    }
+    new Vue({
+        el:'#app',
+        components:{
+            'v-a':a
+        }
+    })
+    </script>
+</body>
+</html>

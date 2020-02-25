@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'一度荒芜'
+        }
+    })
+
+
+    vm.$once("gehao",()=>{console.log('gehao')})
+    setInterval(()=>{
+        vm.$emit("gehao")
+    },2000)
+    setTimeout(()=>{
+        vm.$off('gehao')
+    },6000)
+    </script>
+</body>
+</html>
