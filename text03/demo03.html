@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .span{
+            font-size: 30px;
+            color: hotpink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <span>{{msg}}</span>
+        <v-span name='葛昊' class="span"></v-span>
+    </div>
+    <script type="text/javascript" src="../js//vue.js"></script>
+    <script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'啦啦啦'
+        },
+        components:{
+            'v-span':{
+                props:['name'],
+                template:'<span>{{name}}</span>',
+                // beforeCreate() {console.log('v-apsn  beforeCreate')},
+                // created() {console.log('v-span  created')},
+                // beforeMount(){console.log('v-span  beforeMount')},
+                // mounted(){console.log('v-span  mounted')},
+                // beforeUpdate(){console.log('v-span  beforeUpdate')},
+                // updated(){console.log('v-span   updated')},
+                // beforeDestroy(){console.log('v-span  beforeDestroy')},
+                // destroyed(){console.log('v-span destroyed')}
+            }
+        },
+        beforeCreate() {console.log('app  beforeCreate')},
+        created() {console.log('app  created')},
+        beforeMount(){console.log('app  beforeMount')},
+        mounted(){console.log('app  mounted')},
+        beforeUpdate(){console.log('app  beforeUpdate')},
+        updated(){console.log('app   updated')},
+        beforeDestroy(){console.log('app  beforeDestroy')},
+        destroyed(){console.log('app destroyed')}
+    })
+    </script>
+</body>
+</html>

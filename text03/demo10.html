@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <v-span title="damu"></v-span>
+        <v-span title="cc"></v-span>
+        <v-span title="xfz"></v-span>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    Vue.prototype.bus = new Vue()
+    const obj = {
+        template:'<span @click="change">{{newTitle}}</span>',
+        props:['title'],
+        data() {
+            return {
+                newTitle : this.title
+            }
+        },
+        methods: {
+            change(){
+                this.bus.$emit('titleText',this.newTitle)
+            }
+        },
+        mounted() {
+            this.bus.$on('titleText',(msg)=>{
+                this.newTitle = msg
+            })
+        },
+    }
+    new Vue({
+        el:'#app',
+        components:{
+            'v-span':obj
+        }
+    })
+    </script>
+</body>
+</html>

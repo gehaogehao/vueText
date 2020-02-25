@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcss.com/pubsub-js/1.7.0/pubsub.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <v-a title='a-text'></v-a>
+        <v-b title='b-text'></v-b>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    const a = {
+        template:'<span @click="change">{{newTitle}}</span>',
+        props:['title'],
+        data() {
+            return {
+                newTitle : this.title
+            }
+        },
+        methods: {
+            change(){
+                PubSub.publish('titleText',this.newTitle)
+            }
+        },
+    }
+    const b = {
+        template:'<span>{{newTitle}}</span>',
+        props:['title'],
+        data() {
+            return {
+                newTitle : this.title
+            }
+        },
+        mounted() {
+            PubSub.subscribe('titleText',(name,msg)=>{
+                this.newTitle = msg
+            })
+        },
+    }
+    new Vue({
+        el:'#app',
+        components:{
+            'v-a':a,
+            'v-b':b,
+        }
+    })
+    </script>
+</body>
+</html>

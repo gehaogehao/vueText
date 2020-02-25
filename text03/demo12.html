@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="app">
+       <span ref='dom'>{{msg}}</span>
+       <v-span ref='component'></v-span>
+   </div>
+   <script type="text/javascript" src="../js/vue.js"></script> 
+   <script type="text/javascript">
+   new Vue({
+       el:'#app',
+       data:{
+           msg:'啦啦啦'
+       },
+       components:{
+           'v-span':{
+               template:'<span>{{msg}}</span>',
+               data() {
+                   return {
+                       msg:'呵呵呵'
+                   }
+               },
+           }
+       },
+       mounted() {
+           console.log(this.$refs)
+       },
+   })
+   </script>
+</body>
+</html>

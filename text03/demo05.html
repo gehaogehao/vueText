@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .arc{
+            width:200px;
+            height:200px;
+            line-height: 200px;
+            background-color: pink;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-arc :num='num' class='arc'></v-arc>
+        <v-arc :num='num' class='arc'></v-arc>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            num:11
+        },
+        components:{
+           'v-arc':{
+               props:{
+                   num:{
+                       type:Number,
+                       required:true,
+                       validator : function(value){
+                           return value > 10
+                       }
+                       //default:100
+                    //    default(){
+                    //        return  100
+                    //    }
+                   }
+               },
+               data() {
+                   return {
+                       arcNum : this.num
+                   }
+               },
+               template:'<i @click="change">{{arcNum}}</i>',
+               methods: {
+                   change(){
+                       this.arcNum += 1
+                   }
+               },
+           }
+        }
+    })
+    </script>
+</body>
+</html>

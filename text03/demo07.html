@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .arc{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-arc :num='num' class='arc' @add='add'></v-arc>
+        <v-arc :num='num' class='arc' @add='add'></v-arc>
+        <i class='arc' style="background: gray;">{{num}}</i>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            num:0
+        },
+        methods:{
+            add(data){
+                this.num += data
+            }
+        },
+        components:{
+            'v-arc':{
+                props:['num'],
+                template:'<i @click="change">{{arcNum}}</i>',
+                data() {
+                    return {
+                        arcNum : this.num
+                    }
+                },
+                methods: {
+                    change(){
+                        this.arcNum += 1
+                        this.$emit('add',1)
+                    }
+                },
+            }
+        }
+    })
+    </script>
+</body>
+</html>
